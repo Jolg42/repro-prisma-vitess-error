@@ -12,7 +12,7 @@ RUST_LOG=debug DEBUG=* npx prisma db push --force-reset
 RUST_LOG=debug DEBUG=* npx prisma db push --force-reset
 ```
 
-The query running can be found in the logs below.
+The query running can be found in the logs below and in the source code at https://github.com/prisma/prisma-engines/blob/13663010eb768a16c965c83f98b9b563d4866a14/schema-engine/sql-schema-describer/src/mysql.rs#L289C8-L302
 I tried to run it separately using `mysql` or TablePlus and could not reproduce the error.
 The error only appears when using our Rust, Schema engine.
 
