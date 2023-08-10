@@ -17,6 +17,7 @@ I tried to run it separately using `mysql` or TablePlus and could not reproduce 
 The error only appears when using our Rust, Schema engine.
 
 Note that removing `BINARY` from the query fixes the issue, you can try this by changing the Prisma packages version from `5.1.1` to `5.2.0-integration-engines-5-2-0-14-joel-basedon-vitess-docker-image-version-update-5a2d26a26c5f7f7ca0deb9908246abfafd259a65.1`
+Here are the changes in the PR that produced that version https://github.com/prisma/prisma-engines/pull/4130
 
 Full logs
 
