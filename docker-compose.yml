@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  vitess-8:
+    # This image has "a bug"
+    image: vitess/vttestserver:mysql80
+    # This image works as expected
+    # image: vitess/vttestserver:v0.17.1-mysql80
+    restart: unless-stopped
+    ports:
+      - 33807:33807
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h127.0.0.1", "-P33577"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+      start_period: 25s
+    environment:
+      PORT: "33804" # unused in testing, but required by vttestserver
+      KEYSPACES: "unsharded" # unused in testing, but required by vttestserver
+      NUM_SHARDS: "1" # unused in testing, but required by vttestserver
+      MYSQL_BIND_HOST: "0.0.0.0"
+      FOREIGN_KEY_MODE: "disallow"
+      MYSQL_MAX_CONNECTIONS: 100000
+      TABLET_REFRESH_INTERVAL: "1s"
